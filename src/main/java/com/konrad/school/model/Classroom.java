@@ -14,12 +14,14 @@ import java.io.Serializable;
 @EqualsAndHashCode
 @Entity
 @Table(name = "classroom")
-public class Classroom implements Serializable {
+class Classroom implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
+    @Column(name = "id_classroom")
     private int id;
-   // @Column(name = )
+    @Column(name = "capacity")
+    private int capacity;
+    @ManyToOne
+    @JoinColumn(name = "id_school")
     private School school;
-    private int capacity; // TODO: 01.08.2018 change spelling capasity to capacity in classroom table
 }

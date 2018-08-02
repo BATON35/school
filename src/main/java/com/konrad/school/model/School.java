@@ -18,11 +18,11 @@ import java.util.List;
 public class School implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
+    @Column(name = "id_school")
     private int id;
-    @Column(name = "names")
-    private String names;
-    @Column(name = "addres")
+    @Column(name = "name")
+    private String name;
+    @Column(name = "address")
     private String address;
     @Column(name = "tel_number")
     private String tellNumber;
@@ -30,7 +30,8 @@ public class School implements Serializable {
     private String mail;
     @Column(name = "patron")
     private String patron;
-    @OneToMany(mappedBy = "school")
+    @OneToMany(mappedBy = "school", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    // TODO: 02.08.2018 change cascade to everything within delete
     private List<Classroom> classrooms;
 }
 
