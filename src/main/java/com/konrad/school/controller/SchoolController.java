@@ -5,6 +5,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class SchoolController {
@@ -19,5 +21,11 @@ public class SchoolController {
     public String listSchools(Model model) {
         model.addAttribute("schools", schoolService.findAll());
         return "schoolsList";
+    }
+
+    @PostMapping("school/delete")
+    public String deleteSchool(@RequestParam int toJestToId) {
+        schoolService.delete(toJestToId);
+        return "redirect:/";
     }
 }

@@ -10,4 +10,6 @@ public interface ISchoolService {
     void save(School school);
 
     School findSchoolById(int id);
+
+    void delete(int id);
 }

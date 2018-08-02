@@ -32,4 +32,9 @@ public class SchoolService implements ISchoolService {
     public School findSchoolById(int id) {
         return schoolRepository.findById(id).get();
     }
+
+    @Override
+    public void delete(int id) {
+        schoolRepository.deleteById(id);
+    }
 }
