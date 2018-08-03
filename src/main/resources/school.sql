@@ -44,7 +44,8 @@ CREATE TABLE IF NOT EXISTS `subject` (
 
 CREATE TABLE IF NOT EXISTS `test` (
   `id_test` INT NOT NULL AUTO_INCREMENT,
-  `type`    VARCHAR(45)  DEFAULT NULL,
+  `type`    ENUM ('test', 'pop_quiz', 'final_test'),
+  `date`    DATE,
   `id_subject` INT          DEFAULT NULL,
   PRIMARY KEY (`id_test`)
 );
