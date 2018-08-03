@@ -89,7 +89,7 @@ ALTER TABLE `student`
 CREATE TABLE IF NOT EXISTS `parent` (
   `id_parent`    INT AUTO_INCREMENT,
   `first_name`   VARCHAR(20),
-  `surname`      VARCHAR(20) NOT NULL,
+  `last_name`      VARCHAR(20) NOT NULL,
   `tell_number`  VARCHAR(9),
   `mobile_phone` VARCHAR(9),
   `mail`         VARCHAR(30),
