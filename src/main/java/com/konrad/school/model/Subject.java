@@ -14,17 +14,14 @@ import java.util.List;
 @AllArgsConstructor
 @EqualsAndHashCode
 @Entity
-@Table(name = "teacher")
-public class Teacher implements Serializable {
+@Table(name = "subject")
+public class Subject implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_teacher")
+    @Column(name = "id_subject")
     private int id;
-    @Column(name = "first_name")
-    private String firstName;
-    @Column(name = "last_name")
-    private String lastName;
-    @OneToMany(mappedBy = "teacher", cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST,CascadeType.REFRESH})
-    private List<Lesson> lessons;
-
+    @Column(name = "subject_name")
+    private String subject_name;
+    @OneToMany(mappedBy = "subject", cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST,CascadeType.REFRESH})
+    private List<Test> subjects;
 }

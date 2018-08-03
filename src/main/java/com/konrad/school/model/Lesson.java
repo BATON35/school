@@ -1,8 +1,17 @@
 package com.konrad.school.model;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
+
 import javax.persistence.*;
 import java.io.Serializable;
 
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@EqualsAndHashCode
 @Entity
 @Table(name = "lesson")
 public class Lesson implements Serializable {
@@ -14,9 +23,12 @@ public class Lesson implements Serializable {
     private String beginTime;
     @Column(name = "day")
     private String Day;
-
-    private int idClassroom;
-    private int idSubject;
-    private int idTeacher;
-    private int idGroup;
+    @ManyToOne
+    @JoinColumn(name = "id_classroom")
+    private Classroom classroom;
+    private int subject;
+    @ManyToOne
+    @JoinColumn(name = "id_teacher")
+    private Teacher teacher;
+    private int group;
 }

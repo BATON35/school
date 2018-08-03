@@ -1,9 +1,11 @@
+DROP SCHEMA `SZKOLA`;
+
 CREATE SCHEMA IF NOT EXISTS `SZKOLA`;
 
 USE `SZKOLA`;
 
 CREATE TABLE IF NOT EXISTS `school` (
-  `id_school`     INT          NOT NULL AUTO_INCREMENT,
+  `id_school`   INT          NOT NULL AUTO_INCREMENT,
   `name`        VARCHAR(255) NOT NULL,
   `address`     VARCHAR(255) NOT NULL,
   `tell_number` VARCHAR(9),
@@ -14,8 +16,8 @@ CREATE TABLE IF NOT EXISTS `school` (
 
 CREATE TABLE IF NOT EXISTS `classroom` (
   `id_classroom` INT NOT NULL AUTO_INCREMENT,
-  `capacity`   INT NOT NULL,
-  `id_school`  INT NOT NULL,
+  `capacity`     INT NOT NULL,
+  `id_school`    INT NOT NULL,
   PRIMARY KEY (`id_classroom`)
 );
 
@@ -24,7 +26,7 @@ ALTER TABLE `classroom`
   ON DELETE NO ACTION;
 
 CREATE TABLE IF NOT EXISTS `lesson` (
-  `id_lesson`      INT NOT NULL AUTO_INCREMENT,
+  `id_lesson`    INT NOT NULL AUTO_INCREMENT,
   `begin_time`   VARCHAR(45)  DEFAULT NULL,
   `day`          VARCHAR(45)  DEFAULT NULL,
   `id_classroom` INT NOT NULL,
@@ -35,31 +37,31 @@ CREATE TABLE IF NOT EXISTS `lesson` (
 );
 
 CREATE TABLE IF NOT EXISTS `subject` (
-  `id_subject`           INT         NOT NULL AUTO_INCREMENT,
+  `id_subject`   INT         NOT NULL AUTO_INCREMENT,
   `subject_name` VARCHAR(45) NOT NULL,
-  `id_test`      INT                  DEFAULT NULL,
   PRIMARY KEY (`id_subject`)
 );
 
 CREATE TABLE IF NOT EXISTS `test` (
-  `id_test`   INT NOT NULL AUTO_INCREMENT,
-  `type` ENUM ('test', 'pop_quiz', 'final_test'),
+  `id_test` INT NOT NULL AUTO_INCREMENT,
+  `type`    VARCHAR(45)  DEFAULT NULL,
+  `id_subject` INT          DEFAULT NULL,
   PRIMARY KEY (`id_test`)
 );
 
-ALTER TABLE `subject`
-  ADD FOREIGN KEY (`id_test`) REFERENCES `test` (`id_test`)
+ALTER TABLE `test`
+  ADD FOREIGN KEY (`id_subject`) REFERENCES `subject` (`id_subject`)
   ON DELETE NO ACTION;
 
 CREATE TABLE IF NOT EXISTS `teacher` (
-  `id_teacher`         INT NOT NULL AUTO_INCREMENT,
+  `id_teacher` INT NOT NULL AUTO_INCREMENT,
   `first_name` VARCHAR(45)  DEFAULT NULL,
   `last_name`  VARCHAR(45)  DEFAULT NULL,
   PRIMARY KEY (`id_teacher`)
 );
 
 CREATE TABLE IF NOT EXISTS `group` (
-  `id_group`              INT NOT NULL AUTO_INCREMENT,
+  `id_group`        INT NOT NULL AUTO_INCREMENT,
   `identity_number` VARCHAR(1)   DEFAULT NULL,
   `identity_letter` VARCHAR(1)   DEFAULT NULL,
   `id_student`      INT NOT NULL,
@@ -78,7 +80,7 @@ ALTER TABLE `lesson`
   ON DELETE NO ACTION;
 
 CREATE TABLE IF NOT EXISTS `student` (
-  `id_student`           INT AUTO_INCREMENT,
+  `id_student`   INT AUTO_INCREMENT,
   `id_class`     INT         NOT NULL,
   `first_name`   VARCHAR(20) NOT NULL,
   `last_name`    VARCHAR(20) NOT NULL,
@@ -93,7 +95,7 @@ ALTER TABLE `group`
   ON DELETE NO ACTION;
 
 CREATE TABLE IF NOT EXISTS `parent` (
-  `id_parent`           INT AUTO_INCREMENT,
+  `id_parent`    INT AUTO_INCREMENT,
   `first_name`   VARCHAR(20),
   `surname`      VARCHAR(20) NOT NULL,
   `tell_number`  VARCHAR(9),
@@ -114,7 +116,7 @@ ALTER TABLE `student_parent`
   ON DELETE NO ACTION;
 
 CREATE TABLE IF NOT EXISTS `grade` (
-  `id_grade`         INT AUTO_INCREMENT,
+  `id_grade`   INT AUTO_INCREMENT,
   `id_subject` INT NOT NULL,
   `grade`      INT(1),
   `grade_mark` VARCHAR(1),

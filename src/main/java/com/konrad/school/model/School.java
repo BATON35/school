@@ -24,14 +24,13 @@ public class School implements Serializable {
     private String name;
     @Column(name = "address")
     private String address;
-    @Column(name = "tel_number")
+    @Column(name = "tell_number")
     private String tellNumber;
     @Column(name = "mail")
     private String mail;
     @Column(name = "patron")
     private String patron;
-    @OneToMany(mappedBy = "school", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    // TODO: 02.08.2018 change cascade to everything within delete
+    @OneToMany(mappedBy = "school", fetch = FetchType.EAGER, cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST,CascadeType.REFRESH})
     private List<Classroom> classrooms;
 }
 

@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 
 @Data
 @NoArgsConstructor
@@ -24,4 +25,6 @@ class Classroom implements Serializable {
     @ManyToOne
     @JoinColumn(name = "id_school")
     private School school;
+    @OneToMany(mappedBy = "classroom", fetch = FetchType.EAGER, cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST,CascadeType.REFRESH})
+    private List<Lesson> lessons;
 }
