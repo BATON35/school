@@ -5,10 +5,10 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
-import sun.util.resources.LocaleData;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.time.LocalDate;
 
 @Data
 @NoArgsConstructor
@@ -21,14 +21,10 @@ public class Test implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_test")
     private int id;
-    @Enumerated(EnumType.STRING)
     @Column(name = "type")
-    private TestType type;
+    private String type;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Column(name = "date")
-    private LocaleData date;
-    @ManyToOne
-    @JoinColumn(name = "id_subject")
-    private Subject subject;
+    private LocalDate date;
 
 }

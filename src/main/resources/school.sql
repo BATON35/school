@@ -30,28 +30,22 @@ CREATE TABLE IF NOT EXISTS `lesson` (
   `begin_time`   VARCHAR(45)  DEFAULT NULL,
   `day`          VARCHAR(45)  DEFAULT NULL,
   `id_classroom` INT NOT NULL,
-  `id_subject`   INT NOT NULL,
+  `subject`   INT NOT NULL,
   `id_teacher`   INT NOT NULL,
   `id_group`     INT NOT NULL,
+  `id_test`     INT UNIQUE NOT NULL,
   PRIMARY KEY (`id_lesson`)
-);
-
-CREATE TABLE IF NOT EXISTS `subject` (
-  `id_subject`   INT         NOT NULL AUTO_INCREMENT,
-  `subject_name` VARCHAR(45) NOT NULL,
-  PRIMARY KEY (`id_subject`)
 );
 
 CREATE TABLE IF NOT EXISTS `test` (
   `id_test` INT NOT NULL AUTO_INCREMENT,
   `type`    ENUM ('test', 'pop_quiz', 'final_test'),
   `date`    DATE,
-  `id_subject` INT          DEFAULT NULL,
   PRIMARY KEY (`id_test`)
 );
 
-ALTER TABLE `test`
-  ADD FOREIGN KEY (`id_subject`) REFERENCES `subject` (`id_subject`)
+ALTER TABLE `lesson`
+  ADD FOREIGN KEY (`id_test`) REFERENCES `test` (`id_test`)
   ON DELETE NO ACTION;
 
 CREATE TABLE IF NOT EXISTS `teacher` (
@@ -76,8 +70,6 @@ ALTER TABLE `lesson`
   ADD FOREIGN KEY (`id_group`) REFERENCES `group` (`id_group`)
   ON DELETE NO ACTION,
   ADD FOREIGN KEY (`id_teacher`) REFERENCES `teacher` (`id_teacher`)
-  ON DELETE NO ACTION,
-  ADD FOREIGN KEY (`id_subject`) REFERENCES `subject` (`id_subject`)
   ON DELETE NO ACTION;
 
 CREATE TABLE IF NOT EXISTS `student` (

@@ -21,14 +21,22 @@ public class Lesson implements Serializable {
     private int id;
     @Column(name = "begin_time")
     private String beginTime;
+    @Enumerated(EnumType.STRING)
     @Column(name = "day")
-    private String Day;
+    private MyDay Day;
     @ManyToOne
     @JoinColumn(name = "id_classroom")
     private Classroom classroom;
-    private int subject;
     @ManyToOne
     @JoinColumn(name = "id_teacher")
     private Teacher teacher;
+    @Enumerated(EnumType.STRING)
+    @Column(name = "subject")
+    private Subject subject;
+    @OneToOne( cascade = CascadeType.ALL)
+    @JoinColumn(name = "id_lesson")
+    private Test test;
     private int group;
+
+
 }
