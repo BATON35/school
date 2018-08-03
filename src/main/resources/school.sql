@@ -26,14 +26,14 @@ ALTER TABLE `classroom`
   ON DELETE NO ACTION;
 
 CREATE TABLE IF NOT EXISTS `lesson` (
-  `id_lesson`    INT NOT NULL AUTO_INCREMENT,
-  `begin_time`   VARCHAR(45)  DEFAULT NULL,
-  `day`          VARCHAR(45)  DEFAULT NULL,
-  `id_classroom` INT NOT NULL,
-  `subject`   INT NOT NULL,
-  `id_teacher`   INT NOT NULL,
-  `id_group`     INT NOT NULL,
-  `id_test`     INT UNIQUE NOT NULL,
+  `id_lesson`    INT        NOT NULL AUTO_INCREMENT,
+  `begin_time`   VARCHAR(45)         DEFAULT NULL,
+  `day`          VARCHAR(45)         DEFAULT NULL,
+  `id_classroom` INT        NOT NULL,
+  `subject`      INT        NOT NULL,
+  `id_teacher`   INT        NOT NULL,
+  `id_group`     INT        NOT NULL,
+  `id_test`      INT UNIQUE NOT NULL,
   PRIMARY KEY (`id_lesson`)
 );
 
@@ -59,8 +59,6 @@ CREATE TABLE IF NOT EXISTS `group` (
   `id_group`        INT NOT NULL AUTO_INCREMENT,
   `identity_number` VARCHAR(1)   DEFAULT NULL,
   `identity_letter` VARCHAR(1)   DEFAULT NULL,
-  `id_student`      INT NOT NULL,
-
   PRIMARY KEY (`id_group`)
 );
 
@@ -81,10 +79,11 @@ CREATE TABLE IF NOT EXISTS `student` (
   `mobile_phone` VARCHAR(9),
   `mail`         VARCHAR(30),
   `id_parent`    INT         NOT NULL,
+  `id_grouop`    INT         NOT NULL,
   PRIMARY KEY (`id_student`)
 );
-ALTER TABLE `group`
-  ADD FOREIGN KEY (`id_student`) REFERENCES `student` (`id_student`)
+ALTER TABLE `student`
+  ADD FOREIGN KEY (`id_grouop`) REFERENCES `group` (`id_group`)
   ON DELETE NO ACTION;
 
 CREATE TABLE IF NOT EXISTS `parent` (
@@ -127,6 +126,9 @@ ALTER TABLE `student_grade`
   ADD FOREIGN KEY (`id_student`) REFERENCES `student` (`id_student`)
   ON DELETE NO ACTION;
 
+USE `SZKOLA`;
+INSERT INTO school (name, address, tell_number, mail, patron)
+VALUES ('Teresy', 'Piździbory mniejsze', '2506059', 'sratatata@wp.com', 'Zagloba')
 
 
 
