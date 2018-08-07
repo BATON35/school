@@ -45,7 +45,7 @@
             </c:forEach>
             </tbody>
         </table>
-        <a href="/book/add/view"><input type="button" class="btn btn-outline-success" name="action" value="ADD"></a>
+        <a href="school/add/view"><input type="button" class="btn btn-outline-success" name="action" value="ADD"></a>
         <input type="submit" class="btn btn-outline-danger" name="action" value="DELETE">
     </form>
 </div>

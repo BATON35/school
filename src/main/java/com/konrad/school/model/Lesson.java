@@ -36,7 +36,6 @@ public class Lesson implements Serializable {
     @OneToOne( cascade = CascadeType.ALL)
     @JoinColumn(name = "id_lesson")
     private Test test;
-    private int group;
 
 
 }

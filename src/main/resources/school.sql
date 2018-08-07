@@ -128,13 +128,15 @@ ALTER TABLE `student_grade`
 
 USE `SZKOLA`;
 INSERT INTO school (name, address, tell_number, mail, patron)
-VALUES ('Teresy', 'Piździbory mniejsze', '2506059', 'sratatata@wp.com', 'Zagloba')
+VALUES ('Franciszka Dolasa', 'Piździbory mniejsze', '2506059', 'sratatata@wp.com', 'Zagloba');
+
+INSERT INTO school (name, address, tell_number, mail, patron)
+VALUES ('Franciszka Dolasa', 'Piździbory mniejsze', '2506059', 'sratatata@wp.com', 'Zagloba');
 
 
 
-
-
-
+INSERT INTO school (name, address, tell_number, mail, patron)
+VALUES ('Franciszka Dolasa', 'Piździbory mniejsze', '2506059', 'sratatata@wp.com', 'Zagloba');
 
 
 

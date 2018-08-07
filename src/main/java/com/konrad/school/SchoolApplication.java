@@ -6,7 +6,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
 @SpringBootApplication
-@Configuration
+@ComponentScan("com.konrad.school.model")
 @ComponentScan("com.konrad.school")
 public class SchoolApplication {
 
