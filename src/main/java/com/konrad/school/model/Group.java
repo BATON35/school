@@ -24,6 +24,9 @@ public class Group implements Serializable {
     private String identityNumber;
     @Column(name = "identity_letter")
     private String identityLetter;
+    @OneToMany(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
+    @JoinColumn(name = "id_group")
+    private List<Lesson> lessons;
     @OneToMany(mappedBy = "group", cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
     private List<Student> students;
 

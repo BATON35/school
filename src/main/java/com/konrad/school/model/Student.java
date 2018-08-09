@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 
 @Data
 @NoArgsConstructor
@@ -30,4 +31,13 @@ public class Student implements Serializable {
     @ManyToOne
     @JoinColumn(name = "id_group")
     private Group group;
+
+    @ManyToMany(mappedBy = "students",fetch = FetchType.EAGER, cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST,CascadeType.REFRESH})
+    private List<Parent> parents;
+
+    @ManyToMany(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST,CascadeType.REFRESH})
+    @JoinTable(name = "student_grade",
+            joinColumns = {@JoinColumn(name = "id_student")},
+            inverseJoinColumns = {@JoinColumn(name = "id_grade")})
+    private List<Student> students;
 }
