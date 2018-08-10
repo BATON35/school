@@ -5,8 +5,10 @@
   Time: 13:19
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8"%>
+<%@ page contentType="text/html;charset=UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
 
 <html>
 <head>
@@ -16,7 +18,7 @@
 </head>
 <body>
 <div class="container mt-4">
-    <form action="school/delete" method="post">
+    <form:form action="school/delete" method="post">
         <table class="table table-hover">
             <thead>
             <tr>
@@ -40,14 +42,29 @@
                     <td>${school.tellNumber}</td>
                     <td>${school.mail}</td>
                     <td>${school.id}</td>
-                    <td><input class="form-check-input" type="radio" name="toJestToId" value="${school.id}" checked></td>
+                    <td><input class="form-check-input" type="radio" name="toJestToId" value="${school.id}" checked>
+                    </td>
                 </tr>
             </c:forEach>
             </tbody>
         </table>
         <a href="school/add/view"><input type="button" class="btn btn-outline-success" name="action" value="ADD"></a>
         <input type="submit" class="btn btn-outline-danger" name="action" value="DELETE">
-    </form>
+    </form:form>
+    <form:form action="${pageContext.request.contextPath}/logout" method="post">
+        <input type="submit" class="btn btn-outline-success" name="action" value="Logout">
+    </form:form>
 </div>
+<p>
+    User:
+    <security:authentication property="principal.username"/>
+    <br><br>
+    Role(s):
+    <security:authentication property="principal.authorities"/>
+<p>
+    <a href="${pageContext.request.contextPath}/leaders">LeaderShip Meeting</a>
+<p>
+
+</p>
 </body>
 </html>
