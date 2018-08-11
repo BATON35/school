@@ -48,7 +48,11 @@
             </c:forEach>
             </tbody>
         </table>
+
+        <security:authorize access="hasRole('ADMIN')">
         <a href="school/add/view"><input type="button" class="btn btn-outline-success" name="action" value="ADD"></a>
+        </security:authorize>
+
         <input type="submit" class="btn btn-outline-danger" name="action" value="DELETE">
     </form:form>
     <form:form action="${pageContext.request.contextPath}/logout" method="post">
