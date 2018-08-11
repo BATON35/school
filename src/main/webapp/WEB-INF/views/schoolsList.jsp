@@ -62,7 +62,7 @@
     Role(s):
     <security:authentication property="principal.authorities"/>
 <p>
-    <a href="${pageContext.request.contextPath}/leaders">LeaderShip Meeting</a>
+    <a href="${pageContext.request.contextPath}/leader">LeaderShip Meeting</a>
 <p>
 
 </p>
