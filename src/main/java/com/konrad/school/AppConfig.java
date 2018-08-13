@@ -18,7 +18,7 @@ public class AppConfig {
     @Autowired
     private Environment env;
 
-    private Logger logger = Logger.getLogger(getClass().getName());
+    //private Logger logger = Logger.getLogger(getClass().getName());
 
     @Bean
     public DataSource securityDataSource() {
@@ -29,7 +29,7 @@ public class AppConfig {
             throw new RuntimeException(e);
         }
 
-        logger.info("\n\n\n\n\n" + env.getProperty("spring.datasource.username") + "\n\n\n\n");
+        //logger.info("\n\n\n\n\n" + env.getProperty("spring.datasource.username") + "\n\n\n\n");
 
         securityDataSource.setJdbcUrl(env.getProperty("spring.datasource.url"));
         securityDataSource.setUser(env.getProperty("spring.datasource.username"));
