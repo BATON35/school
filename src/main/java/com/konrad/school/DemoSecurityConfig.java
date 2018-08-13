@@ -1,21 +1,29 @@
 package com.konrad.school;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.User;
 
+import javax.sql.DataSource;
+import java.util.logging.Logger;
+
 @Configuration
-@EnableWebSecurity
+//@EnableWebSecurity
 public class DemoSecurityConfig extends WebSecurityConfigurerAdapter {
+
+    @Qualifier("securityDataSource")
+    @Autowired
+    private DataSource securityDataSource;
+
+    private Logger logger = Logger.getLogger(getClass().getName());
+
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        User.UserBuilder userBuilder = User.withDefaultPasswordEncoder();
-        auth.inMemoryAuthentication().withUser(userBuilder.username("Konrad").password("konrad").roles("EMPLOYEE"));
-        auth.inMemoryAuthentication().withUser(userBuilder.username("Mary").password("konrad").roles("EMPLOYEE", "MANAGER"));
-        auth.inMemoryAuthentication().withUser(userBuilder.username("Susan").password("konrad").roles( "EMPLOYEE", "ADMIN"));
+
     }
 
     @Override
@@ -34,4 +42,7 @@ public class DemoSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .exceptionHandling().accessDeniedPage("/access-denied");
     }
+
+
+
 }
