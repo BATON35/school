@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
-public class SecurityController {
+public class LoginController {
 
     @GetMapping("/showMyLoginPage")
     public String showMyLoginPage() {

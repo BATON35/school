@@ -24,6 +24,7 @@
         <java.version>1.8</java.version>
         <spring.boot.starter.security.version>2.0.4.RELEASE</spring.boot.starter.security.version>
         <springsecurity.version>5.0.7.RELEASE</springsecurity.version>
+        <springframework.version>5.0.5.RELEASE</springframework.version>
     </properties>
 
     <dependencies>
@@ -53,6 +54,18 @@
             <groupId>com.mchange</groupId>
             <artifactId>c3p0</artifactId>
             <version>0.9.5.2</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-tx</artifactId>
+            <version>${springframework.version}</version>
+        </dependency>
+
+        <!-- Spring ORM -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-orm</artifactId>
+            <version>${springframework.version}</version>
         </dependency>
         <dependency>
             <groupId>jstl</groupId>
