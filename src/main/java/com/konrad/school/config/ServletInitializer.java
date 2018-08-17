@@ -1,4 +1,4 @@
-package com.konrad.school;
+package com.konrad.school.config;
 
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;

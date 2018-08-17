@@ -1,4 +1,4 @@
-package com.konrad.school;
+package com.konrad.school.config;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

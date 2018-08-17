@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.validation.Valid;
 
-@Controller
+//@Controller
 public class SchoolController {
     private ISchoolService schoolService;
 

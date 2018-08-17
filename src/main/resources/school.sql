@@ -91,7 +91,7 @@ CREATE TABLE IF NOT EXISTS `parent` (
   `tell_number`  VARCHAR(9),
   `mobile_phone` VARCHAR(9),
   `mail`         VARCHAR(30),
-  `username`     VARCHAR(50) NOT NULL,
+  `user_name`     VARCHAR(50) NOT NULL,
   `password`     CHAR(80)    NOT NULL,
   PRIMARY KEY (`id_parent`)
 );
@@ -152,22 +152,22 @@ SET FOREIGN_KEY_CHECKS = 1;
 INSERT INTO `role` (name)
 VALUES
   ('ROLE_EMPLOYEE'), ('ROLE_MANAGER'), ('ROLE_ADMIN');
+USE `SZKOLA`;
 
-INSERT INTO `parent` (username, password, first_name, last_name, mail)
+INSERT INTO `parent` (user_name, password, first_name, last_name, mail)
 VALUES
-  ('john', '$2a$04$eFytJDGtjbThXa80FyOOBuFdK2IwjyWefYkMpiBEFlpBwDH.5PM0K', 'John', 'Doe', 'john@luv2code.com'),
-  ('mary', '$2a$04$eFytJDGtjbThXa80FyOOBuFdK2IwjyWefYkMpiBEFlpBwDH.5PM0K', 'Mary', 'Public', 'mary@luv2code.com'),
-  ('susan', '$2a$04$eFytJDGtjbThXa80FyOOBuFdK2IwjyWefYkMpiBEFlpBwDH.5PM0K', 'Susan', 'Adams', 'susan@luv2code.com');
+('john', '$2a$04$eFytJDGtjbThXa80FyOOBuFdK2IwjyWefYkMpiBEFlpBwDH.5PM0K', 'John', 'Doe', 'john@luv2code.com'),
+('mary', '$2a$04$eFytJDGtjbThXa80FyOOBuFdK2IwjyWefYkMpiBEFlpBwDH.5PM0K', 'Mary', 'Public', 'mary@luv2code.com'),
+('susan', '$2a$04$eFytJDGtjbThXa80FyOOBuFdK2IwjyWefYkMpiBEFlpBwDH.5PM0K', 'Susan', 'Adams', 'susan@luv2code.com');
 
 INSERT INTO `users_roles` (id_parent, id_role)
 VALUES
-  (1, 1),
-  (2, 1),
-  (2, 2),
-  (3, 1),
-  (3, 3);
+(1, 1),
+(2, 1),
+(2, 2),
+(3, 1),
+(3, 3);
 
-USE `SZKOLA`;
 INSERT INTO school (name, address, tell_number, mail, patron)
 VALUES ('Franciszka Dolasa', 'Piździbory mniejsze', '2506059', 'sratatata@wp.com', 'Zagloba');
 
