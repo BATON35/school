@@ -13,8 +13,6 @@ import java.io.Serializable;
 import java.util.List;
 
 @Data
-@NoArgsConstructor
-@AllArgsConstructor
 @EqualsAndHashCode
 @Entity
 @Table(name = "school")
@@ -38,5 +36,17 @@ public class School implements Serializable {
     private String patron;
     @OneToMany(mappedBy = "school", fetch = FetchType.EAGER, cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
     private List<Classroom> classrooms;
+
+    public School(@Size(min = 2, message = " more then two sign") String name, String address, @Pattern(regexp = "\\d{2}-\\d{3}", message = "proper convention is xx-xxx , x is number from 0-9") String tellNumber, String mail, String patron, List<Classroom> classrooms) {
+        this.name = name;
+        this.address = address;
+        this.tellNumber = tellNumber;
+        this.mail = mail;
+        this.patron = patron;
+        this.classrooms = classrooms;
+    }
+
+    public School() {
+    }
 }
 

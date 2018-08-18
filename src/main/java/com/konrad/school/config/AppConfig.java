@@ -25,7 +25,7 @@ import java.util.Properties;
 import java.util.logging.Logger;
 
 @Configuration
-@ComponentScan(basePackages = "com.konrad.school")
+@ComponentScan(basePackages = "com.konrad")
 @EnableTransactionManagement
 //@EnableWebMvc
 public class AppConfig {

@@ -11,8 +11,6 @@ import java.io.Serializable;
 import java.util.List;
 
 @Data
-@NoArgsConstructor
-@AllArgsConstructor
 @EqualsAndHashCode
 @Entity
 @Table(name = "parent")
@@ -54,4 +52,26 @@ public class Parent implements Serializable {
 
     // TODO: 16.08.2018 let's change users_roles to parent_role
 
+
+    public Parent() {
+    }
+
+    public Parent(String firstName, String lastName, String mobilePhone, String mail, String userName, String password, List<Student> students, List<Role> roles) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.mobilePhone = mobilePhone;
+        this.mail = mail;
+        this.userName = userName;
+        this.password = password;
+        this.students = students;
+        this.roles = roles;
+    }
+
+    public Parent(String firstName, String lastName, String mail, String userName, String password) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.mail = mail;
+        this.userName = userName;
+        this.password = password;
+    }
 }

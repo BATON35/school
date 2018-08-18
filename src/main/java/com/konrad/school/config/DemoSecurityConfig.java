@@ -14,7 +14,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @Configuration
 @EnableWebSecurity
-@ComponentScan(basePackages="com.konrad.school")
+@ComponentScan(basePackages="com.konrad")
 public class DemoSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
