@@ -1,5 +1,3 @@
-DROP SCHEMA `SZKOLA`;
-
 CREATE SCHEMA IF NOT EXISTS `SZKOLA`;
 
 USE `SZKOLA`;
@@ -89,11 +87,12 @@ ALTER TABLE `student`
 CREATE TABLE IF NOT EXISTS `parent` (
   `id_parent`    INT AUTO_INCREMENT,
   `first_name`   VARCHAR(20),
-  `last_name`      VARCHAR(20) NOT NULL,
+  `last_name`    VARCHAR(20) NOT NULL,
   `tell_number`  VARCHAR(9),
   `mobile_phone` VARCHAR(9),
   `mail`         VARCHAR(30),
-  `id_student`   INT         NOT NULL,
+  `user_name`     VARCHAR(50) NOT NULL,
+  `password`     CHAR(80)    NOT NULL,
   PRIMARY KEY (`id_parent`)
 );
 CREATE TABLE IF NOT EXISTS `student_parent` (
@@ -126,17 +125,60 @@ ALTER TABLE `student_grade`
   ADD FOREIGN KEY (`id_student`) REFERENCES `student` (`id_student`)
   ON DELETE NO ACTION;
 
+CREATE TABLE IF NOT EXISTS `role` (
+  `id_role`   INT(11) NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(50)      DEFAULT NULL,
+  PRIMARY KEY (`id_role`)
+);
+
+CREATE TABLE IF NOT EXISTS `users_roles` (
+  id_parent int(11) NOT NULL,
+  id_role int(11) NOT NULL,
+  PRIMARY KEY (`id_parent`,`id_role`)
+);
+
+ALTER TABLE `users_roles`
+  ADD FOREIGN KEY (`id_parent`) REFERENCES `parent` (`id_parent`)
+  ON DELETE NO ACTION,
+  ADD FOREIGN KEY (`id_role`) REFERENCES `role` (`id_role`)
+  ON DELETE NO ACTION;
+
+
+SET FOREIGN_KEY_CHECKS = 1;
+
+--
+-- Dumping data for table `users_roles`
+--
+INSERT INTO `role` (name)
+VALUES
+  ('ROLE_EMPLOYEE'), ('ROLE_MANAGER'), ('ROLE_ADMIN');
 USE `SZKOLA`;
-INSERT INTO school (name, address, tell_number, mail, patron)
-VALUES ('Franciszka Dolasa', 'Piździbory mniejsze', '2506059', 'sratatata@wp.com', 'Zagloba');
+
+INSERT INTO `parent` (user_name, password, first_name, last_name, mail)
+VALUES
+('john', '$2a$04$eFytJDGtjbThXa80FyOOBuFdK2IwjyWefYkMpiBEFlpBwDH.5PM0K', 'John', 'Doe', 'john@luv2code.com'),
+('mary', '$2a$04$eFytJDGtjbThXa80FyOOBuFdK2IwjyWefYkMpiBEFlpBwDH.5PM0K', 'Mary', 'Public', 'mary@luv2code.com'),
+('susan', '$2a$04$eFytJDGtjbThXa80FyOOBuFdK2IwjyWefYkMpiBEFlpBwDH.5PM0K', 'Susan', 'Adams', 'susan@luv2code.com');
+
+INSERT INTO `users_roles` (id_parent, id_role)
+VALUES
+(1, 1),
+(2, 1),
+(2, 2),
+(3, 1),
+(3, 3);
 
 INSERT INTO school (name, address, tell_number, mail, patron)
 VALUES ('Franciszka Dolasa', 'Piździbory mniejsze', '2506059', 'sratatata@wp.com', 'Zagloba');
 
+INSERT INTO school (name, address, tell_number, mail, patron)
+VALUES ('Franciszka Dolasa', 'Piździbory mniejsze', '2506059', 'sratatata@wp.com', 'Zagloba');
 
 
 INSERT INTO school (name, address, tell_number, mail, patron)
 VALUES ('Franciszka Dolasa', 'Piździbory mniejsze', '2506059', 'sratatata@wp.com', 'Zagloba');
+
+
 
 
 
